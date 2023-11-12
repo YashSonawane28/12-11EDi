@@ -7,14 +7,15 @@ const DisplayRequested = (props) => {
           <div className='row'>
             <div className='col-12 col-md-6'>
                 <p><b>Owner:</b> {props.owner}</p>
-                <p><b>Survey Number:</b> {props.surveyNo}</p>
-                <p><b>Property ID:</b> {props.propertyId}</p>
+                <p><b>Tender ID:</b> {props.propertyId}</p>
                 <p><b>Market Value:</b> {props.marketValue}</p>
+                <p><b>Tender File:</b> {props.ipfsuri}</p>
               </div>
+              
               <div className='col-12 col-md-6'>
-                <p><b>State:</b> {props.state}</p>
-                <p><b>District:</b> {props.district}</p>
-                <p><b>City:</b> {props.city}</p>
+                <p><b>Owned By:</b> {props.ownerName}</p>
+                <p><b>Tender Name:</b> {props.tendorName}</p>
+                <p><b>Tender Type:</b> {props.tendortype}</p>
             </div>
           </div>
 

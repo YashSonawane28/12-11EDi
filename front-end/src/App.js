@@ -10,6 +10,7 @@ import Admin from './components/Admin';
 import UserProfile from './components/UserProfile';
 import AddAdmin from './components/AddAdmin';
 import AddVendor from './components/AddVendor';
+import Restriction from './components/Restriction';
 
 
 function App() {
@@ -69,10 +70,13 @@ useEffect(() =>{
         else if(await contract.isAdmin({from: account})){
             navigate('/admin');
         }
-        else{
+        else if(await contract.isVendor({from: account})){
             navigate('./userprofile')
         }
-        
+        else
+        {
+          navigate('./restriction')
+        }
     }
     account && checkAccount();
 }, [web3Api, account])
@@ -85,6 +89,7 @@ useEffect(() =>{
       <Route path='/AddAdmin' element={<AddAdmin myWeb3Api={web3Api} account={account} />} />
       <Route path='/AddVendor' element={<AddVendor myWeb3Api={web3Api} account={account} />} />
       <Route path='/admin/*' element={<Admin myWeb3Api={web3Api} account={account} />} />
+      <Route path='/restriction' element={<Restriction myWeb3Api={web3Api} account={account} />} />
       <Route path='/userprofile/*' element={<UserProfile myWeb3Api={web3Api} account={account} />} />
       <Route path='/' element= 
       {

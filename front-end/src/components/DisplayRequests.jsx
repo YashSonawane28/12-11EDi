@@ -9,6 +9,7 @@ const DisplayRequests = (props) => {
             <p><b>Bid Amount:</b> {props.stringBidAmount}</p>
             <p><b>RequesterFileURI:</b> {props.requesterFileURI}</p>
             <p><b>TenderName:</b> {props.tendorName}</p>
+            <p><b>Establishment Year:</b> {props.establishmentyear}</p>
 
             <button className='accept-req' onClick={() => {props.acceptReq(props.index, props.reqNo)}}><b>Accept Request</b></button>
         </div>

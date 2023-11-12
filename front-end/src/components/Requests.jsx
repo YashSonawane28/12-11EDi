@@ -39,6 +39,8 @@ const Requests = (props) => {
                 from: account
               })
 
+              const establishmentyear = await contract.getestablishYear(requester)
+
               const requesterName = await contract.getRequesterName(ownerOwns[0], ownerOwns[1], ownerOwns[2], ownerOwns[3].words[0], j, {
                 from: account
               })
@@ -61,7 +63,7 @@ const Requests = (props) => {
               const tendorName = landDetails[4];
 
 
-              const reqDetails = { state: ownerOwns[0], district: ownerOwns[1], city: ownerOwns[2], surveyNo: ownerOwns[3].words[0], index: i, reqNo: j, requesterName: requesterName, stringBidAmount: stringBidAmount, requesterFileURI: requesterFileURI, requester, propertyId , tendorName:tendorName}
+              const reqDetails = { state: ownerOwns[0], district: ownerOwns[1], city: ownerOwns[2], surveyNo: ownerOwns[3].words[0], index: i, reqNo: j, requesterName: requesterName, stringBidAmount: stringBidAmount, requesterFileURI: requesterFileURI, establishmentyear: establishmentyear, requester, propertyId , tendorName:tendorName}
               console.log("below reqdetails.............")
               reqArr.push(reqDetails);
 
@@ -105,6 +107,7 @@ const Requests = (props) => {
                 requesterFileURI={details.requesterFileURI}
                 tendorName={details.tendorName}
                 stringBidAmount={details.stringBidAmount}
+                establishmentyear={details.establishmentyear}
                 index={details.index}
                 reqNo={details.reqNo}
                 state={details.state}

@@ -26,8 +26,10 @@ const Requested = (props) => {
           const landDetails = await contract.getLandDetails(reqLand[0], reqLand[1], reqLand[2], reqLand[3].words[0], {
             from: account
           })
+        
+          const ownerName = await contract.getUserName(landDetails[0]);
 
-          const landDetails2 = {state: reqLand[0], district: reqLand[1], city: reqLand[2], surveyNo: reqLand[3].words[0]}
+          const landDetails2 = {state: reqLand[0], district: reqLand[1], city: reqLand[2], surveyNo: reqLand[3].words[0],ownerName: ownerName }
           let allDetails = {...landDetails, ...landDetails2}
           reqArr.push(allDetails);
         }
@@ -56,9 +58,13 @@ const Requested = (props) => {
                  
                 key = {index}
                 owner = {details[0]}
+                ownerName = {details.ownerName}
                 propertyId = {details[1].words[0]}
                 index = {details[2].words[0]}
                 marketValue = {details[3].words[0]}
+                tendorName = {details[4]}
+                tendortype = {details[5]}
+                ipfsuri = {details[6]}
                 state = {details.state}
                 district = {details.district}
                 city = {details.city}

@@ -345,6 +345,14 @@ contract Registry {
         uint256 noOfReq = landDetalsMap[_state][_district][_city][_surveyNo]
             .noOfRequests;
 
+        string memory _FileURI = landDetalsMap[_state][_district][_city][
+                _surveyNo
+            ].requests[_reqNo].FileURI;
+
+        uint256 _BidAmount = landDetalsMap[_state][_district][_city][
+                _surveyNo
+            ].requests[_reqNo].BidAmount;
+
         // deleting requested land from all requesters AND removing all incoming requests
         for (uint256 i = 0; i < noOfReq; i++) {
             address requesterAddr = landDetalsMap[_state][_district][_city][
@@ -359,8 +367,12 @@ contract Registry {
                 i
             ];
         }
+        
+        
 
         landDetalsMap[_state][_district][_city][_surveyNo].owner = newOwner;
+        landDetalsMap[_state][_district][_city][_surveyNo].ipfsuri = _FileURI;
+        landDetalsMap[_state][_district][_city][_surveyNo].marketValue = _BidAmount;
         landDetalsMap[_state][_district][_city][_surveyNo]
             .markAvailable = false;
         landDetalsMap[_state][_district][_city][_surveyNo].noOfRequests = 0;
@@ -583,7 +595,7 @@ contract Registry {
         return (fullName);
     }
 
-    
+
 
     function getestablishYear(
         address _addr
